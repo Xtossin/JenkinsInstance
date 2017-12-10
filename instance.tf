@@ -1,4 +1,4 @@
-#Provision a Jenkins Instance on ubuntu box.
+#Provision a Jenkins Instance on ubuntu box. I am using a t2.micro(free tier). However, t2.small is an ideal type for Jenkins due to more RAM.
 
 resource "aws_instance" "jenkins-instance" {
   ami           = "${lookup(var.AMIS, var.AWS_region)}"

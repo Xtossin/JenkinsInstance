@@ -1,4 +1,5 @@
-# Internet VPC
+# Internet VPC using a /16 Subnetting scheme.
+
 resource "aws_vpc" "xtos-main" {
     cidr_block = "10.0.0.0/16"
     instance_tenancy = "default"
@@ -10,8 +11,11 @@ resource "aws_vpc" "xtos-main" {
     }
 }
 
+/*Will Be creating 3 Public and 3 Private Subnets. Not all are needed.
+But for testing purposes i am adding more.*/
 
-# Subnets
+#Public Subnets (3)
+
 resource "aws_subnet" "xtos-main-public-1" {
     vpc_id = "${aws_vpc.xtos-main.id}"
     cidr_block = "10.0.1.0/24"
@@ -42,34 +46,36 @@ resource "aws_subnet" "xtos-main-public-3" {
         Name = "xtos-main-public-3"
     }
 }
-resource "aws_subnet" "main-private-1" {
+
+#Private Subnets(3)
+resource "aws_subnet" "xtos-main-private-1" {
     vpc_id = "${aws_vpc.xtos-main.id}"
     cidr_block = "10.0.4.0/24"
     map_public_ip_on_launch = "false"
     availability_zone = "us-west-1b"
 
     tags {
-        Name = "main-private-1"
+        Name = "xtos-main-private-1"
     }
 }
-resource "aws_subnet" "main-private-2" {
+resource "aws_subnet" "xtos-main-private-2" {
     vpc_id = "${aws_vpc.xtos-main.id}"
     cidr_block = "10.0.5.0/24"
     map_public_ip_on_launch = "false"
     availability_zone = "us-west-1b"
 
     tags {
-        Name = "main-private-2"
+        Name = "xtos-main-private-2"
     }
 }
-resource "aws_subnet" "main-private-3" {
+resource "aws_subnet" "xtos-main-private-3" {
     vpc_id = "${aws_vpc.xtos-main.id}"
     cidr_block = "10.0.6.0/24"
     map_public_ip_on_launch = "false"
     availability_zone = "us-west-1b"
 
     tags {
-        Name = "main-private-3"
+        Name = "xtos-main-private-3"
     }
 }
 
@@ -78,7 +84,7 @@ resource "aws_internet_gateway" "main-gw" {
     vpc_id = "${aws_vpc.xtos-main.id}"
 
     tags {
-        Name = "main"
+        Name = "xtos-main-gw"
     }
 }
 

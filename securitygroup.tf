@@ -5,14 +5,14 @@ resource "aws_security_group" "jenkins-securitygroup" {
   name = "jenkins-securitygroup"
   description = "security group that allows ssh and all egress traffic"
 
-#Outbound Rules
+#Outbound Rules.
   egress {
       from_port = 0
       to_port = 0
       protocol = "-1"
       cidr_blocks = ["0.0.0.0/0"]
   }
-#Inbound Rules
+#Inbound Rules. Currently ssh on port 22 is wide open. Restrict CIDR public to single IP range for more security.
   ingress {
       from_port = 8080
       to_port = 8080
@@ -45,7 +45,8 @@ resource "aws_security_group" "app-securitygroup" {
       protocol = "-1"
       cidr_blocks = ["0.0.0.0/0"]
   }
-#Inbound Rules for App insrance SG
+#Inbound Rules for App insrance SG.Currently ssh on port 22 is wide open.
+#Important: Restrict CIDR public to single IP range for more security.
   ingress {
       from_port = 22
       to_port = 22
