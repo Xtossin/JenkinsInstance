@@ -11,8 +11,8 @@ resource "aws_instance" "jenkins-instance" {
   # the security group the instance will belowng into. See securitygroup.tf
   vpc_security_group_ids = ["${aws_security_group.jenkins-securitygroup.id}"]
 
-
-  # user data-This is used to execute data only at launch time.
+//user data-This is used to execute data only at launch time.
+//See cloudinit.tf which essentially call for jenkins-init.sh script to run.
   user_data = "${data.template_cloudinit_config.cloudinit-jenkins.rendered}"
 
 }

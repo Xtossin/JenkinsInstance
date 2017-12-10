@@ -1,4 +1,4 @@
-#The provider.tf file will contain alias variable for Provider, Secrets and Region.
+#The provider.tf file will contain alias variable for Provider(AWS in this case), Secrets and Region.
 
 
 provider "aws" {
