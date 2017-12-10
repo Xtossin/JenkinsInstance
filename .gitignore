@@ -1,0 +1,12 @@
+*.idea
+*.tfvars
+*.pem
+*.pub
+*.idea
+*.tfvars
+*.pem
+*.pub
+*.backup
+*.tfstate
+*.terraform
+*.secret
