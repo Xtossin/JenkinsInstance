@@ -1,7 +1,8 @@
 #Empty Curly brackets means we are not specifying a value. An option is to specify a "default.
+//Sensitive info is added in gitignore.
 
 
-#variables for the access and Secret will be pulled from secret.tfvars or terraform.tfvars file
+#variables for the access and Secret will be pulled from secret.tfvars or terraform.tfvars file(These are added in gtignore).
 variable AWS_access_key{}
 variable AWS_secret_key{}
 variable "MY_PRIVATE_KEY"{}
